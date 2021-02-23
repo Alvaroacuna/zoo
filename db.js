@@ -28,6 +28,7 @@ const User = sql.define('User', {
   email: {
     type: Sequelize.STRING,
     allowNull: false,
+    unique: true,
     validate: {
       notNull: {
         msg: 'Debe indicar un email'
@@ -38,7 +39,7 @@ const User = sql.define('User', {
       },
       isEmail: {
         msg: 'Debe ser un email válido'
-      }
+      },
     }
   },
   password: {
@@ -72,7 +73,7 @@ const Keeper = sql.define('Keeper', {
       },
       len: {
         args: [2],
-        msg: 'El nonbre debe ser de largo al menos 2'
+        msg: 'El nombre debe ser de largo al menos 2'
       }
     }
   },

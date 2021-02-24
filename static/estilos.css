@@ -1,0 +1,7 @@
+#container-login {
+    background-color: red;
+    margin: 80px;
+    padding: 40px;
+    background-image: url("banner.png");
+    background-position: center;
+}

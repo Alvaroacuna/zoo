@@ -24,11 +24,18 @@ router.post('/register', async (req, res) => {
 
   try {
     console.log('pass', password_encrypted);
+    const usuarios = await User.findAndCountAll();
+    let tipo_usuario = 'Normal';
+    if(usuarios.count == 0) {
+      tipo_usuario = 'Admin'
+    }
     // Después intentamos ingresar el nuevo usuario
+    
     const user = await User.create({
       name: req.body.name,
       email: req.body.email,
-      password: password_encrypted
+      password: password_encrypted,
+      rol: tipo_usuario
     });
     // guardamos el usuario creado en session
     req.session.user = user;
